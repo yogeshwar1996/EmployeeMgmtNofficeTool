@@ -3,17 +3,6 @@ import com.sun.speech.freetts.*;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-        
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author hp
- */
 public class TTS_frame extends javax.swing.JFrame {
 
     /**

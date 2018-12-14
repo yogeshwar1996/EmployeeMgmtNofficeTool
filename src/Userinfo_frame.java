@@ -1,13 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author hp
- */
 import javax.crypto.*;
 import com.itextpdf.text.pdf.PdfCopyFields;
 import com.itextpdf.text.pdf.PdfReader;
@@ -74,10 +65,7 @@ public class Userinfo_frame extends javax.swing.JFrame {
     int  ctLength;
     
 
-    /**
-     * u
-     * Creates new form Userinfo_frame
-     */
+    
     public Userinfo_frame() {
         initComponents();
         conn = javaconnect.ConnectDb();
