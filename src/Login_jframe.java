@@ -1,34 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author hp
- */
 import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Login_jframe extends javax.swing.JFrame {
-    Connection conn=null;
-    ResultSet rs=null;
-    PreparedStatement pst=null;
+    
+    /*conn is a variable of type Connection who's value is declared as null*/    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
-    /**
-     * Creates new form Login_jframe
-     */
     public Login_jframe() {
+        /*initcomponents() is a method that NetBeans swing Designer creates to 
+        initialise components (set default values etc.). It doesn't really have
+        anything to do with the JFrame class.
+        You can call the method whenever you like (constructor, other method).
+        For Java, it is just like any other method. The NetBeans IDE, however,
+        calls it inside the constructor to control the parameters you have
+        passed via your GUI editor of Netbeans. It is by default private*/
         initComponents();
-        conn=javaconnect.ConnectDb();
+        
+        conn = javaconnect.ConnectDb();
     }
-    public void close()
-    {
-    WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+
+    public void close() {
+        WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
     /**
@@ -143,43 +141,32 @@ public class Login_jframe extends javax.swing.JFrame {
 
     private void cmd_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_loginActionPerformed
         // TODO add your handling code here:
-        String sql="select * from Employeeinfo where username=? and password=?";
-        try
-        {
-        pst=conn.prepareStatement(sql);
-        pst.setString(1,txt_username.getText());
-        pst.setString(2,txt_password.getText());
-        rs=pst.executeQuery();
-        if(rs.next())
-        {
-            JOptionPane.showMessageDialog(null,"Username and Password is Correct");
-            rs.close();
-            pst.close();
-            
-            Employee_info s =new Employee_info();
-            s.setVisible(true);
-            close();
-          
-        }
-        else
-        { 
-                JOptionPane.showMessageDialog(null,"Username and Password is not Correct");
-        }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e);
-        }
-        finally
-        {
-        try
-        {
-            rs.close();
-             pst.close();
-        }
-        catch(Exception e)
-        {
-           }
+        String sql = "select * from Employeeinfo where username=? and password=?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_username.getText());
+            pst.setString(2, txt_password.getText());
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Username and Password is Correct");
+                rs.close();
+                pst.close();
+
+                Employee_info s = new Employee_info();
+                s.setVisible(true);
+                close();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Username and Password is not Correct");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_cmd_loginActionPerformed
 
@@ -187,7 +174,6 @@ public class Login_jframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmd_loginKeyPressed
 
-   
     /**
      * @param args the command line arguments
      */
@@ -203,14 +189,14 @@ public class Login_jframe extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }*/
-                 //             UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-                            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-                 //             UIManager.setLookAndFeel("com.jtattoo.plaf.smart.AeroLookAndFeel");
-             //    UIManager.setLookAndFeel("com.jtattoo.plaf.smart.AluminiumLookAndFeel");
-             //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.BernsteinLookAndFeel");
-             //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.FastLookAndFeel");
-             //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.GraphiteLookAndFeel");
-             //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.HiFiLookAndFeel");
+                //             UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+                UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+                //             UIManager.setLookAndFeel("com.jtattoo.plaf.smart.AeroLookAndFeel");
+                //    UIManager.setLookAndFeel("com.jtattoo.plaf.smart.AluminiumLookAndFeel");
+                //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.BernsteinLookAndFeel");
+                //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.FastLookAndFeel");
+                //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.GraphiteLookAndFeel");
+                //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.HiFiLookAndFeel");
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login_jframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
